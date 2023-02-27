@@ -10,6 +10,9 @@ const DOMSelectors = {
 let number1;
 let number2;
 let operation;
+let newNumber1;
+let newNumber2;
+let answer;
 
 DOMSelectors.number.forEach((button) => {
   button.addEventListener("click", function () {
@@ -21,7 +24,6 @@ DOMSelectors.number.forEach((button) => {
     ) {
       DOMSelectors.input.insertAdjacentHTML("beforeend", `${button.innerHTML}`);
       number1 = DOMSelectors.input.innerHTML;
-      console.log(number1);
     } else if (
       DOMSelectors.input.innerHTML.includes("+") ||
       DOMSelectors.input.innerHTML.includes("-") ||
@@ -30,29 +32,9 @@ DOMSelectors.number.forEach((button) => {
     ) {
       DOMSelectors.input.insertAdjacentHTML("beforeend", `${button.innerHTML}`);
       number2 = (number2 || "") + button.innerHTML;
-      console.log(number2);
     }
   });
 });
-
-/* DOMSelectors.number.forEach((button) => {
-  button.addEventListener("click", function () {
-    if (
-      DOMSelectors.input.innerHTML.includes("+") ||
-      DOMSelectors.input.innerHTML.includes("-") ||
-      DOMSelectors.input.innerHTML.includes("*") ||
-      DOMSelectors.input.innerHTML.includes("/")
-    ) {
-      DOMSelectors.input.insertAdjacentHTML("beforeend", `${button.innerHTML}`);
-      number2 = DOMSelectors.input.innerHTML;
-      console.log(number2);
-    } else {
-      DOMSelectors.input.insertAdjacentHTML("beforeend", `${button.innerHTML}`);
-      number1 = DOMSelectors.input.innerHTML;
-      console.log(number1);
-    }
-  });
-}); */
 
 DOMSelectors.operation.forEach((button) => {
   button.addEventListener("click", function () {
@@ -61,8 +43,8 @@ DOMSelectors.operation.forEach((button) => {
 });
 
 DOMSelectors.delete.addEventListener("click", function () {
-  let newNumber = DOMSelectors.input.innerHTML.slice(0, -1);
-  DOMSelectors.input.innerHTML = `${newNumber}`;
+  let deletedNumber = DOMSelectors.input.innerHTML.slice(0, -1);
+  DOMSelectors.input.innerHTML = `${deletedNumber}`;
 });
 
 DOMSelectors.clear.addEventListener("click", function () {
@@ -71,8 +53,35 @@ DOMSelectors.clear.addEventListener("click", function () {
 
 DOMSelectors.enter.addEventListener("click", function () {
   if (DOMSelectors.input.innerHTML.includes("+")) {
-    let sum = number1 + number2;
-    console.log(sum);
-    DOMSelectors.input.innerHTML = `${sum}`;
+    newNumber1 = parseFloat(number1);
+    newNumber2 = parseFloat(number2);
+    answer = newNumber1 + newNumber2;
+    DOMSelectors.input.innerHTML = `${answer}`;
+    number1 = answer;
+    number2 = "";
+  }
+  if (DOMSelectors.input.innerHTML.includes("-")) {
+    newNumber1 = parseFloat(number1);
+    newNumber2 = parseFloat(number2);
+    answer = newNumber1 - newNumber2;
+    DOMSelectors.input.innerHTML = `${answer}`;
+    number1 = answer;
+    number2 = "";
+  }
+  if (DOMSelectors.input.innerHTML.includes("*")) {
+    newNumber1 = parseFloat(number1);
+    newNumber2 = parseFloat(number2);
+    answer = newNumber1 * newNumber2;
+    DOMSelectors.input.innerHTML = `${answer}`;
+    number1 = answer;
+    number2 = "";
+  }
+  if (DOMSelectors.input.innerHTML.includes("/")) {
+    newNumber1 = parseFloat(number1);
+    newNumber2 = parseFloat(number2);
+    answer = newNumber1 / newNumber2;
+    DOMSelectors.input.innerHTML = `${answer}`;
+    number1 = answer;
+    number2 = "";
   }
 });
