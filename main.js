@@ -1,5 +1,6 @@
 const DOMSelectors = {
   input: document.getElementById("input"),
+  history: document.getElementById("history"),
   number: document.querySelectorAll(".number"),
   operation: document.querySelectorAll(".operation"),
   delete: document.getElementById("delete"),
@@ -49,6 +50,7 @@ DOMSelectors.delete.addEventListener("click", function () {
 
 DOMSelectors.clear.addEventListener("click", function () {
   DOMSelectors.input.innerHTML = "";
+  DOMSelectors.history.innerHTML = "";
 });
 
 DOMSelectors.enter.addEventListener("click", function () {
@@ -59,6 +61,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answer} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("-")) {
     newNumber1 = parseFloat(number1);
@@ -67,6 +70,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answer} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("*")) {
     newNumber1 = parseFloat(number1);
@@ -75,6 +79,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answer} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("/")) {
     newNumber1 = parseFloat(number1);
@@ -83,5 +88,6 @@ DOMSelectors.enter.addEventListener("click", function () {
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answer} <br />`);
   }
 });
