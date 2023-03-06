@@ -5,6 +5,7 @@ const DOMSelectors = {
   operation: document.querySelectorAll(".operation"),
   delete: document.getElementById("delete"),
   clear: document.getElementById("clear"),
+  clearAll: document.getElementById("clearAll"),
   enter: document.getElementById("enter"),
 };
 
@@ -14,6 +15,7 @@ let operation;
 let newNumber1;
 let newNumber2;
 let answer;
+const answerHistory = [];
 
 DOMSelectors.number.forEach((button) => {
   button.addEventListener("click", function () {
@@ -50,6 +52,10 @@ DOMSelectors.delete.addEventListener("click", function () {
 
 DOMSelectors.clear.addEventListener("click", function () {
   DOMSelectors.input.innerHTML = "";
+});
+
+DOMSelectors.clearAll.addEventListener("click", function () {
+  DOMSelectors.input.innerHTML = "";
   DOMSelectors.history.innerHTML = "";
 });
 
@@ -58,36 +64,40 @@ DOMSelectors.enter.addEventListener("click", function () {
     newNumber1 = parseFloat(number1);
     newNumber2 = parseFloat(number2);
     answer = newNumber1 + newNumber2;
+    answerHistory.push(`${newNumber1}+${newNumber2}=${answer}`);
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answer} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("-")) {
     newNumber1 = parseFloat(number1);
     newNumber2 = parseFloat(number2);
     answer = newNumber1 - newNumber2;
+    answerHistory.push(`${newNumber1}-${newNumber2}=${answer}`);
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answer} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("*")) {
     newNumber1 = parseFloat(number1);
     newNumber2 = parseFloat(number2);
     answer = newNumber1 * newNumber2;
+    answerHistory.push(`${newNumber1}*${newNumber2}=${answer}`);
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answer} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("/")) {
     newNumber1 = parseFloat(number1);
     newNumber2 = parseFloat(number2);
     answer = newNumber1 / newNumber2;
+    answerHistory.push(`${newNumber1}/${newNumber2}=${answer}`);
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answer} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
   }
 });
