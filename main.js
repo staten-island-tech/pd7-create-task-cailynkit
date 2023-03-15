@@ -102,7 +102,6 @@ DOMSelectors.enter.addEventListener("click", function () {
   if (isNaN(`${answer}`)) {
     DOMSelectors.history.insertAdjacentHTML("beforeend", `This answer is not a number <br />`);
     number1 = "";
-    number2 = "";
   }
   if (isNaN(`${answer}`) === false) {
     DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
