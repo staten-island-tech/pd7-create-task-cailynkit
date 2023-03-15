@@ -69,7 +69,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     newNumber2 = parseFloat(number2);
     answer = newNumber1 + newNumber2;
     answerHistory.push(`${newNumber1}+${newNumber2}=${answer}`);
-    answerHistory()
+    pushanswerHistory()
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
@@ -80,7 +80,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     newNumber2 = parseFloat(number2);
     answer = newNumber1 - newNumber2;
     answerHistory.push(`${newNumber1}-${newNumber2}=${answer}`);
-    answerHistory()
+    pushanswerHistory()
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
@@ -91,7 +91,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     newNumber2 = parseFloat(number2);
     answer = newNumber1 * newNumber2;
     answerHistory.push(`${newNumber1}*${newNumber2}=${answer}`);
-    answerHistory()
+    pushanswerHistory()
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
@@ -102,7 +102,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     newNumber2 = parseFloat(number2);
     answer = newNumber1 / newNumber2;
     answerHistory.push(`${newNumber1}/${newNumber2}=${answer}`);
-    answerHistory()
+    pushanswerHistory()
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
