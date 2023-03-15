@@ -59,7 +59,7 @@ DOMSelectors.clearAll.addEventListener("click", function () {
   DOMSelectors.history.innerHTML = "";
 });
 
-DOMSelectors.enter.addEventListener("click", function () {
+function calculate () {
   if (DOMSelectors.input.innerHTML.includes("+")) {
     newNumber1 = parseFloat(number1);
     newNumber2 = parseFloat(number2);
@@ -95,6 +95,17 @@ DOMSelectors.enter.addEventListener("click", function () {
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
+  }};
+
+DOMSelectors.enter.addEventListener("click", function () {
+  calculate();
+  if (answer.isNaN() === true) {
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
   }
-  DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
+  if (answer.isNaN() === false) {
+    DOMSelectors.input.innerHTML = "This answer is not a number"
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `This answer is not a number <br />`);
+    number1 = "";
+    number2 = "";
+  }
 });
