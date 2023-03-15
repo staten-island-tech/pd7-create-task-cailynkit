@@ -97,5 +97,4 @@ DOMSelectors.enter.addEventListener("click", function () {
     number2 = "";
   }
   DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
-};
 });
