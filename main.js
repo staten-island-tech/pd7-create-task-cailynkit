@@ -16,7 +16,6 @@ let newNumber1;
 let newNumber2;
 let answer;
 const answerHistory = [];
-let lastAnswer;
 
 DOMSelectors.number.forEach((button) => {
   button.addEventListener("click", function () {
@@ -61,7 +60,7 @@ DOMSelectors.clearAll.addEventListener("click", function () {
 });
 
 function pushAnswerHistory () {
-  lastAnswer = answerHistory.slice(-1)
+  answerHistory.slice(-1)
 };
 
 DOMSelectors.enter.addEventListener("click", function () {
@@ -70,6 +69,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     newNumber2 = parseFloat(number2);
     answer = newNumber1 + newNumber2;
     answerHistory.push(`${newNumber1}+${newNumber2}=${answer}`);
+    answerHistory()
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
@@ -80,29 +80,32 @@ DOMSelectors.enter.addEventListener("click", function () {
     newNumber2 = parseFloat(number2);
     answer = newNumber1 - newNumber2;
     answerHistory.push(`${newNumber1}-${newNumber2}=${answer}`);
+    answerHistory()
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${lastAnswer} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${pushAnswerHistory()} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("*")) {
     newNumber1 = parseFloat(number1);
     newNumber2 = parseFloat(number2);
     answer = newNumber1 * newNumber2;
     answerHistory.push(`${newNumber1}*${newNumber2}=${answer}`);
+    answerHistory()
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${lastAnswer} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${pushAnswerHistory()} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("/")) {
     newNumber1 = parseFloat(number1);
     newNumber2 = parseFloat(number2);
     answer = newNumber1 / newNumber2;
     answerHistory.push(`${newNumber1}/${newNumber2}=${answer}`);
+    answerHistory()
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${lastAnswer} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${pushAnswerHistory()} <br />`);
   }
 });
