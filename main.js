@@ -99,13 +99,12 @@ function calculate () {
 
 DOMSelectors.enter.addEventListener("click", function () {
   calculate();
-  if (answer.isNaN() === true) {
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
-  }
-  if (answer.isNaN() === false) {
-    DOMSelectors.input.innerHTML = "This answer is not a number"
+  if (isNaN(`${answer}`)) {
     DOMSelectors.history.insertAdjacentHTML("beforeend", `This answer is not a number <br />`);
     number1 = "";
     number2 = "";
+  }
+  if (isNaN(`${answer}`) === false) {
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
   }
 });
