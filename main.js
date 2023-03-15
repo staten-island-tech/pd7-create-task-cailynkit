@@ -59,6 +59,10 @@ DOMSelectors.clearAll.addEventListener("click", function () {
   DOMSelectors.history.innerHTML = "";
 });
 
+function pushAnswerHistory () {
+  answerHistory.slice(-1)
+};
+
 DOMSelectors.enter.addEventListener("click", function () {
   if (DOMSelectors.input.innerHTML.includes("+")) {
     newNumber1 = parseFloat(number1);
@@ -68,7 +72,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${pushAnswerHistory()} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("-")) {
     newNumber1 = parseFloat(number1);
@@ -78,7 +82,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${pushAnswerHistory()} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("*")) {
     newNumber1 = parseFloat(number1);
@@ -88,7 +92,7 @@ DOMSelectors.enter.addEventListener("click", function () {
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${pushAnswerHistory()} <br />`);
   }
   if (DOMSelectors.input.innerHTML.includes("/")) {
     newNumber1 = parseFloat(number1);
@@ -98,6 +102,6 @@ DOMSelectors.enter.addEventListener("click", function () {
     DOMSelectors.input.innerHTML = `${answer}`;
     number1 = answer;
     number2 = "";
-    DOMSelectors.history.insertAdjacentHTML("beforeend", `${answerHistory.slice(-1)} <br />`);
+    DOMSelectors.history.insertAdjacentHTML("beforeend", `${pushAnswerHistory()} <br />`);
   }
 });
